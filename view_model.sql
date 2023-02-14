@@ -1,5 +1,2 @@
-select 1 as id
-union all
-select 1 as id
-union all
-select null as id
+{{ config(materialized='view') }}
+select 2 as id, 'Bob' as name

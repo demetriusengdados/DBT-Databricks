@@ -2,14 +2,16 @@
 
     {{
         config(
-          check_cols=["name", "date"],
+          check_cols=["msg"],
           unique_key="id",
           strategy="check",
-          target_schema=schema
+          target_schema=schema,
+          tblproperties={
+            'tblproperties_to_snapshot' : 'true'
+          }
         )
-
     }}
 
-    select * from {{ ref('seed') }}
+    select * from {{ ref('set_tblproperties') }}
 
 {% endsnapshot %}
